@@ -9,6 +9,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.control.Button;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 public class App extends Application {
@@ -32,6 +33,8 @@ public class App extends Application {
                 button.setLayoutY(50);
                 racine.getChildren().add(button);
 
+                
+                
                 for (int row = 0; row < gridSize; row++) {
                         for (int col = 0; col < gridSize; col++) {
                                 Rectangle cell = new Rectangle(col * (cellSize + gapSize), row * (cellSize + gapSize),
@@ -45,9 +48,17 @@ public class App extends Application {
                                 cell.setX(col * (cellSize + gapSize) + 100);
                         }
                 }
-
-
+                
+                Circle circle = new Circle(150, 150, 45);
+                circle.setFill(Color.RED);
+                racine.getChildren().add(circle);
+                
+                button.setOnAction(e -> {
+                        circle.setCenterX(150);
+                        circle.setCenterY(700);
+                });
                 Scene scene = new Scene(racine, 1000, 800);
+
                 stage.setScene(scene);
                 stage.setTitle("Puissance 4");
                 stage.show();
