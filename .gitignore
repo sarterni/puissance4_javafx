@@ -1,1 +1,2 @@
-.class
+# Ignorer tous les fichiers .class
+*.class
