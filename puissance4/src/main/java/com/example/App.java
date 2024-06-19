@@ -30,8 +30,18 @@ public class App extends Application {
 
                 for (int col = 0; col < gridSize; col++) {
                         Button drop = new Button("Drop");
-                        drop.setLayoutX(col * (cellSize + gapSize) + 100); // Positionner le bouton au-dessus de la colonne
-                        drop.setLayoutY(50); // Position Y arbitraire pour que le bouton soit au-dessus de la grille
+                        drop.setLayoutX(col * (cellSize + gapSize) + 100);
+                        drop.setLayoutY(50);
+                        final int column = col; // Colonne actuelle pour utilisation dans le lambda
+                        drop.setOnAction(e -> {
+                                // Créer un nouveau cercle chaque fois que le bouton est cliqué
+                                Circle newCircle = new Circle(cellSize / 2);
+                                newCircle.setFill(Color.RED);
+                                // Positionner le cercle dans la colonne correspondante, à la dernière ligne
+                                newCircle.setCenterX(column * (cellSize + gapSize) + 100 + cellSize / 2);
+                                newCircle.setCenterY((gridSize - 1) * (cellSize + gapSize) + 100 + cellSize / 2);
+                                racine.getChildren().add(newCircle);
+                        });
                         racine.getChildren().add(drop);
                 }
 
@@ -49,14 +59,6 @@ public class App extends Application {
                         }
                 }
 
-                Circle circle = new Circle(150, 150, 45);
-                circle.setFill(Color.RED);
-                racine.getChildren().add(circle);
-
-                // drop.setOnAction(e -> {
-                //         circle.setCenterX(150);
-                //         circle.setCenterY(700);
-                // });
                 Scene scene = new Scene(racine, 1000, 800);
 
                 stage.setScene(scene);
