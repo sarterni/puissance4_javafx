@@ -8,12 +8,13 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class App extends Application {
 
         private static Scene scene;
-        int gridSize = 4;
+        int gridSize = 6;
         int cellSize = 100;
         int gapSize = 10;
 
@@ -26,17 +27,27 @@ public class App extends Application {
                 text.setY(50);
                 racine.getChildren().add(text);
                 
+                Button button = new Button("Drop");
+                button.setLayoutX(100);
+                button.setLayoutY(50);
+                racine.getChildren().add(button);
+
                 for (int row = 0; row < gridSize; row++) {
                         for (int col = 0; col < gridSize; col++) {
                                 Rectangle cell = new Rectangle(col * (cellSize + gapSize), row * (cellSize + gapSize),
                                                 cellSize, cellSize);
                                 cell.setFill(Color.WHITE);
                                 cell.setStroke(Color.BLACK);
+                                cell.setY(100);
+                                cell.setX(100);
                                 racine.getChildren().add(cell);
+                                cell.setY(row * (cellSize + gapSize) + 100);
+                                cell.setX(col * (cellSize + gapSize) + 100);
                         }
                 }
 
-                Scene scene = new Scene(racine, 800, 500);
+
+                Scene scene = new Scene(racine, 1000, 800);
                 stage.setScene(scene);
                 stage.setTitle("Puissance 4");
                 stage.show();
