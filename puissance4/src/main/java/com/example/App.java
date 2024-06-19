@@ -35,7 +35,7 @@ public class App extends Application {
                         final int column = col; // Colonne actuelle pour utilisation dans le lambda
                         drop.setOnAction(e -> {
                                 // Créer un nouveau cercle chaque fois que le bouton est cliqué
-                                Circle newCircle = new Circle(cellSize / 2);
+                                Circle newCircle = new Circle(cellSize / 2.7);
                                 newCircle.setFill(Color.RED);
                                 // Positionner le cercle dans la colonne correspondante, à la dernière ligne
                                 newCircle.setCenterX(column * (cellSize + gapSize) + 100 + cellSize / 2);
