@@ -30,11 +30,12 @@ public class App extends Application {
                 
                 Button button = new Button("Drop");
                 button.setLayoutX(100);
-                button.setLayoutY(50);
-                racine.getChildren().add(button);
 
-                
-                
+                Button drop = new Button("Drop");
+                drop.setLayoutX(100);
+                drop.setLayoutY(50);
+                racine.getChildren().add(drop);
+
                 for (int row = 0; row < gridSize; row++) {
                         for (int col = 0; col < gridSize; col++) {
                                 Rectangle cell = new Rectangle(col * (cellSize + gapSize), row * (cellSize + gapSize),
@@ -48,12 +49,12 @@ public class App extends Application {
                                 cell.setX(col * (cellSize + gapSize) + 100);
                         }
                 }
-                
+
                 Circle circle = new Circle(150, 150, 45);
                 circle.setFill(Color.RED);
                 racine.getChildren().add(circle);
-                
-                button.setOnAction(e -> {
+
+                drop.setOnAction(e -> {
                         circle.setCenterX(150);
                         circle.setCenterY(700);
                 });
