@@ -28,10 +28,12 @@ public class App extends Application {
                 text.setY(50);
                 racine.getChildren().add(text);
 
-                Button drop = new Button("Drop");
-                drop.setLayoutX(100);
-                drop.setLayoutY(50);
-                racine.getChildren().add(drop);
+                for (int col = 0; col < gridSize; col++) {
+                        Button drop = new Button("Drop");
+                        drop.setLayoutX(col * (cellSize + gapSize) + 100); // Positionner le bouton au-dessus de la colonne
+                        drop.setLayoutY(50); // Position Y arbitraire pour que le bouton soit au-dessus de la grille
+                        racine.getChildren().add(drop);
+                }
 
                 for (int row = 0; row < gridSize; row++) {
                         for (int col = 0; col < gridSize; col++) {
@@ -51,10 +53,10 @@ public class App extends Application {
                 circle.setFill(Color.RED);
                 racine.getChildren().add(circle);
 
-                drop.setOnAction(e -> {
-                        circle.setCenterX(150);
-                        circle.setCenterY(700);
-                });
+                // drop.setOnAction(e -> {
+                //         circle.setCenterX(150);
+                //         circle.setCenterY(700);
+                // });
                 Scene scene = new Scene(racine, 1000, 800);
 
                 stage.setScene(scene);
