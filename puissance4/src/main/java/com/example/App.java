@@ -27,9 +27,6 @@ public class App extends Application {
                 text.setX(350);
                 text.setY(50);
                 racine.getChildren().add(text);
-                
-                Button button = new Button("Drop");
-                button.setLayoutX(100);
 
                 Button drop = new Button("Drop");
                 drop.setLayoutX(100);
