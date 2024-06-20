@@ -59,6 +59,33 @@ public class App extends Application {
                         }
                 }
 
+                Circle circle = new Circle(150, 120, 50); // Position (150, 120) avec un rayon de 50
+                circle.setFill(Color.WHITE); // Couleur initiale du cercle
+                circle.setStroke(Color.BLACK); // Couleur du contour
+                racine.getChildren().add(circle);
+        
+                // Création du bouton
+                Button btnChangeToYellow = new Button("Changer couleur en jaune");
+                btnChangeToYellow.setLayoutX(760); // Position X du bouton
+                btnChangeToYellow.setLayoutY(160); // Position Y du bouton
+        
+                // Ajout du gestionnaire d'événements au bouton
+                btnChangeToYellow.setOnAction(event -> {
+                    circle.setFill(Color.YELLOW); // Change la couleur du cercle en jaune
+                });
+        
+                racine.getChildren().add(btnChangeToYellow);
+
+                Button btnChangeToRed = new Button("Changer couleur en rouge");
+                btnChangeToRed.setLayoutX(760); // Position X du bouton
+                btnChangeToRed.setLayoutY(200); // Position Y du bouton
+
+                btnChangeToRed.setOnAction(event -> {
+                    circle.setFill(Color.RED); // Change la couleur du cercle en rouge
+                });
+
+                racine.getChildren().add(btnChangeToRed);
+
                 Scene scene = new Scene(racine, 1000, 800);
 
                 stage.setScene(scene);
