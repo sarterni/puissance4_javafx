@@ -19,8 +19,24 @@ public class App extends Application {
         int cellSize = 100;
         int gapSize = 10;
 
+        
+
         public void start(Stage stage) {
                 Pane racine = new Pane();
+
+                long nombreDeCercles = racine.getChildren().stream()
+        .filter(node -> node instanceof Circle)
+        .count();
+
+// Créer un texte pour afficher le nombre de cercles
+Text texteNombreCercles = new Text("Nombre de cercles : " + nombreDeCercles);
+texteNombreCercles.setLayoutX(10); // Position X du texte
+texteNombreCercles.setLayoutY(20); // Position Y du texte
+
+// Ajouter le texte à la racine
+racine.getChildren().add(texteNombreCercles);
+
+
                 Text text = new Text("Puissance 4");
                 text.setFont(Font.font("Arial", FontWeight.BOLD, 20));
                 text.setFill(Color.BLACK);
@@ -32,12 +48,12 @@ public class App extends Application {
                         Button drop = new Button("Drop");
                         drop.setLayoutX(col * (cellSize + gapSize) + 100);
                         drop.setLayoutY(50);
-                        final int column = col; // Colonne actuelle pour utilisation dans le lambda
+                        final int column = col; 
                         drop.setOnAction(e -> {
-                                // Créer un nouveau cercle chaque fois que le bouton est cliqué
+                                
                                 Circle newCircle = new Circle(cellSize / 2.7);
                                 newCircle.setFill(Color.RED);
-                                // Positionner le cercle dans la colonne correspondante, à la dernière ligne
+                                
                                 newCircle.setCenterX(column * (cellSize + gapSize) + 100 + cellSize / 2);
                                 newCircle.setCenterY((gridSize - 1) * (cellSize + gapSize) + 100 + cellSize / 2);
                                 racine.getChildren().add(newCircle);
@@ -59,32 +75,33 @@ public class App extends Application {
                         }
                 }
 
-                Circle circle = new Circle(150, 120, 50); // Position (150, 120) avec un rayon de 50
-                circle.setFill(Color.WHITE); // Couleur initiale du cercle
-                circle.setStroke(Color.BLACK); // Couleur du contour
+                Circle circle = new Circle(150, 120, 50); 
+                circle.setFill(Color.WHITE); 
+                circle.setStroke(Color.BLACK); 
                 racine.getChildren().add(circle);
         
-                // Création du bouton
+                
                 Button btnChangeToYellow = new Button("Changer couleur en jaune");
-                btnChangeToYellow.setLayoutX(760); // Position X du bouton
-                btnChangeToYellow.setLayoutY(160); // Position Y du bouton
+                btnChangeToYellow.setLayoutX(760); 
+                btnChangeToYellow.setLayoutY(160); 
         
-                // Ajout du gestionnaire d'événements au bouton
+                
                 btnChangeToYellow.setOnAction(event -> {
-                    circle.setFill(Color.YELLOW); // Change la couleur du cercle en jaune
+                    circle.setFill(Color.YELLOW); 
                 });
         
                 racine.getChildren().add(btnChangeToYellow);
 
                 Button btnChangeToRed = new Button("Changer couleur en rouge");
-                btnChangeToRed.setLayoutX(760); // Position X du bouton
-                btnChangeToRed.setLayoutY(200); // Position Y du bouton
+                btnChangeToRed.setLayoutX(760); 
+                btnChangeToRed.setLayoutY(200); 
 
                 btnChangeToRed.setOnAction(event -> {
-                    circle.setFill(Color.RED); // Change la couleur du cercle en rouge
+                    circle.setFill(Color.RED); 
                 });
 
                 racine.getChildren().add(btnChangeToRed);
+
 
                 Scene scene = new Scene(racine, 1000, 800);
 
